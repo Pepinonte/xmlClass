@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- structure des séances -->
+<seances>
+    <seance id="1">
+        <dateArrivee>
+            <jour>01</jour>
+            <mois>01</mois>
+            <annee>2021</annee>
+        </dateArrivee>
+        <heureArrivee>
+            <heureA>15</heureA>
+            <minutesA>30</minutesA>
+        </heureArrivee>
+        <heureDepart>
+            <heureD>17</heureD>
+            <minutesD>30</minutesD>
+        </heureDepart>
+        <typeClient>scolaire</typeClient>
+    </seance>
+</seances>

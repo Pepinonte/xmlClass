@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- structure des séances -->
+<seances>
+    <seance id="1">
+        <dateArrivee>01/01/2021</dateArrivee>
+        <heureArrivee>15:30</heureArrivee>
+        <heureDepart>17:30</heureDepart>
+        <typeClient>scolaire</typeClient>
+    </seance>
+</seances>
