@@ -1,10 +1,10 @@
-<!-- structure des séances -->
+<?xml version="1.0" encoding="UTF-8"?>
 <seances>
-    <seance id="1">
-        <dateArrivee>Wed Feb 3 2021</dateArrivee>
-        <heureArrivee>14:30:10</heureArrivee>
-        <dateDepart>Thu Feb 11 2021</dateDepart>
-        <heureDepart>14:30:10</heureDepart>
-        <typeClient>debutant</typeClient>
+    <seance>
+        <dateArrivee>1</dateArrivee>
+        <heureArrivee>4</heureArrivee>
+        <dateDepart>2</dateDepart>
+        <heureDepart>3</heureDepart>
+        <typeClient>5</typeClient>
     </seance>
 </seances>

@@ -11,8 +11,8 @@ public:
     gestionXml();
     void getElement(QString data);
     void openFile(QString chemin);
-    QString setElement(QString data);
-
+    void setElement(QString data);
+    void newSenace(QString dateArrivee, QString dateDepart, QString heureDepart, QString heureArrivee, QString type);
 private:
     QDomDocument document;
     QFile file;

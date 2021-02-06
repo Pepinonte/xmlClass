@@ -6,10 +6,12 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
     QDomDocument document;
-    gestionXml gestX;
+    gestionXml xml;
 
-    gestX.openFile("C:/Users/Christian GROS/Desktop/testXml/test3.xml");
-    gestX.getElement("typeClient");
+    xml.openFile("C:/Users/Christian GROS/Desktop/xmlClass/test3.xml");
+    xml.getElement("typeClient");
+    xml.setElement("rien");
+    xml.newSenace("1", "2", "3", "4", "5");
 
     return a.exec();
 }
