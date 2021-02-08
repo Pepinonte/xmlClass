@@ -1,8 +1,0 @@
-<Books>
-    <Book ID="0" Name="mon book 0">
-        <Chapitre ID="0" Name="mon chap 0"/>
-    </Book>
-    <Book ID="1" Name="mon book 1">
-        <Chapitre ID="1" Name="mon chap 1"/>
-    </Book>
-</Books>
