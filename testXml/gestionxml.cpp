@@ -6,26 +6,21 @@ gestionXml::gestionXml()
 
 }
 
-void gestionXml::openFile(QString chemin)
+void gestionXml::openFile(QString path)
 {
-    file.setFileName(chemin);
+    file.setFileName(path);
 
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
         qDebug()<< "erreur lors de l'ouverture";
-    }
     else
     {
         if(!document.setContent(&file))
-        {
             qDebug()<< "erreur lors du chargement";
-        }
-        file.close();
     }
+    file.close();
 }
 
-
-void gestionXml::getElement(QString data)
+void gestionXml::readElement(QString data)
 {
     dom_element = document.documentElement();
 
@@ -53,33 +48,9 @@ void gestionXml::getElement(QString data)
     }
 }
 
-
-void gestionXml::setElement(QString data)
+void gestionXml::structSenace(QString path)
 {
-    QDomElement docElem = document.documentElement();
-
-    QDomElement write_elem = document.createElement("information");
-    write_elem.setAttribute("id", 2);
-    docElem.appendChild(write_elem);
-
-    if(!file.open(QIODevice::WriteOnly))
-    {
-        file.close();
-        qDebug()<<"Erreur","Impossible d'écrire dans le document XML";
-    }
-
-    QString write_doc = document.toString();
-    QTextStream stream(&file);
-    stream << write_doc;
-    file.close();
-
-
-}
-
-
-void gestionXml::newSenace(QString dateArrivee, QString dateDepart, QString heureDepart, QString heureArrivee, QString type)
-{
-    QString fileXmlName = "C:/Users/Christian GROS/Desktop/xmlClass/test3.xml";
+    QString fileXmlName = path;
     QFile fileXml(fileXmlName);
 
     // Ouverture du fichier en écriture et en texte. (sort de la fonction si le fichier ne s'ouvre pas)
@@ -97,30 +68,75 @@ void gestionXml::newSenace(QString dateArrivee, QString dateDepart, QString heur
     // Élément racine du fichier XML
     writer.writeStartElement("seances");
 
-    // Ajoute l'élément "seance" dans le fichier XML
-    writer.writeStartElement("seance");
-
-    // Ajoute un élément "dateArrivee", lui applique le texte "bzhenel" et ferme l'élément "nom"
-    writer.writeTextElement("dateArrivee", dateArrivee);
-
-    // Ajoute l'élément "heureArrivee", lui applique le texte "www.bzhenel.fr" et ferme l'élément "url"
-    writer.writeTextElement("heureArrivee", heureArrivee);
-
-    // Ajoute un élément "dateArrivee", lui applique le texte "bzhenel" et ferme l'élément "nom"
-    writer.writeTextElement("dateDepart", dateDepart);
-
-    // Ajoute l'élément "heureArrivee", lui applique le texte "www.bzhenel.fr" et ferme l'élément "url"
-    writer.writeTextElement("heureDepart", heureDepart);
-
-    // Ajoute l'élément "heureArrivee", lui applique le texte "www.bzhenel.fr" et ferme l'élément "url"
-    writer.writeTextElement("typeClient", type);
-
-    // Ferme l'élément seance
-    writer.writeEndElement();
-
     // Finalise le document XML
     writer.writeEndDocument();
 
     // Fermer le fichier pour bien enregistrer le document et ferme l'élément root
     fileXml.close();
+
 }
+
+void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heureDepart, QString heureArrivee, QString type)
+{
+
+    QFile file("C:/Users/Christian GROS/Desktop/xmlClass/test3.xml");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << "Failed to open file";
+    }
+    QDomDocument document;
+    if (!document.setContent(&file))
+    {
+        qDebug() << "failed to parse file";
+        file.close();
+    }
+
+    file.close();
+
+    QDomElement docEle = document.documentElement();
+    QDomNodeList elements = docEle.elementsByTagName("seances");
+
+    QDomElement seance = document.createElement("seance");
+    seance.setAttribute("id", 2);
+
+    QDomElement dateArEle = document.createElement("dateArrivee");
+    QDomText dateArCont = document.createTextNode(dateArrivee);
+
+    QDomElement dateDeEle = document.createElement("dateDepart");
+    QDomText dateDeCont = document.createTextNode(dateDepart);
+
+    QDomElement heureArEle = document.createElement("heureArrivee");
+    QDomText heureArCont = document.createTextNode(heureArrivee);
+
+    QDomElement heureDeEle = document.createElement("heureDepart");
+    QDomText heureDeCont = document.createTextNode(heureDepart);
+
+    QDomElement typeEle = document.createElement("typeClient");
+    QDomText typeCont = document.createTextNode(type);
+
+    dateArEle.appendChild(dateArCont);
+    dateDeEle.appendChild(dateDeCont);
+    heureArEle.appendChild(heureArCont);
+    heureDeEle.appendChild(heureDeCont);
+    typeEle.appendChild(typeCont);
+
+    seance.appendChild(dateArEle);
+    seance.appendChild(heureArEle);
+    seance.appendChild(dateDeEle);
+    seance.appendChild(heureDeEle);
+    seance.appendChild(typeEle);
+
+    docEle.appendChild(seance);
+
+    QFile outFile( "C:/Users/Christian GROS/Desktop/xmlClass/test3.xml" );
+
+    if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
+        qDebug( "Failed to open file for writing." );
+
+    QTextStream stream( &outFile );
+    stream << document.toString();
+
+    outFile.close();
+
+}
+

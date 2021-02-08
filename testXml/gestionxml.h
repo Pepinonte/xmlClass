@@ -9,17 +9,17 @@ class gestionXml
 {
 public:
     gestionXml();
-    void getElement(QString data);
-    void openFile(QString chemin);
-    void setElement(QString data);
-    void newSenace(QString dateArrivee, QString dateDepart, QString heureDepart, QString heureArrivee, QString type);
+    void openFile(QString path);
+    void readElement(QString data);
+    void structSenace(QString path);
+    void newSeance(QString dateArrivee, QString dateDepart, QString heureDepart, QString heureArrivee, QString type);
+
 private:
     QDomDocument document;
     QFile file;
     QDomNode noeud;
     QDomElement element;
     QDomElement dom_element;
-
 };
 
 #endif // GESTIONXML_H
