@@ -1,1 +1,1 @@
-# xmlClass
+Cette classe est prevu pour permetre la manipulation et l'utilisation des fichiers XML.

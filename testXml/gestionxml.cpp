@@ -17,7 +17,7 @@ void gestionXml::openFile(QString path)
         if(!document.setContent(&file))
             qDebug()<< "erreur lors du chargement";
     }
-    file.close();
+//    file.close();
 }
 
 void gestionXml::readElement(QString data)
@@ -46,6 +46,7 @@ void gestionXml::readElement(QString data)
             }
                 noeud = noeud.nextSibling();
     }
+    file.close();
 }
 
 void gestionXml::structSenace(QString path)

@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
     xml.openFile("C:/Users/Christian GROS/Desktop/xmlClass/test3.xml");
     xml.structSenace("C:/Users/Christian GROS/Desktop/xmlClass/test3.xml");
     xml.newSeance("'d'","'d'","'d'","'d'","'d'");
+//    xml.newSeance("'d'","'d'","'d'","'d'","'d'");
     xml.readElement("dateDepart");
 
     return a.exec();
