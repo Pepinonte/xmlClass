@@ -13,6 +13,8 @@ public:
     void readElement(QString data);
     void structSenace(QString path);
     void newSeance(QString dateArrivee, QString dateDepart, QString heureDepart, QString heureArrivee, QString type);
+    void modElement(QString data);
+    void supElement(QString data);
 
 private:
     QDomDocument document;

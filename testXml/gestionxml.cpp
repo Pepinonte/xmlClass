@@ -94,11 +94,40 @@ void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heur
 
     file.close();
 
+
+
+    QDomNodeList umgVars = dom_element.elementsByTagName("seance");
+
+    QDomNode lastElem = umgVars.at(umgVars.size() - 1);
+    dom_element = document.documentElement();
+    noeud = dom_element.firstChild();
+    QDomElement domElement = noeud.toElement();
+    QDomElement lastEEEE = lastElem.toElement();
+    int id = 0;
+
+    while (!noeud.isNull()) {
+        QDomElement domElement = noeud.toElement();
+        if (!domElement.isNull()) {
+            id++;
+            qDebug()<<id;
+            if (domElement.attribute("id")!="") {
+                id++;
+                qDebug()<<id;
+                qDebug()<<domElement.attribute("id").toInt();
+                id = domElement.attribute("id").toInt();
+            }
+            qDebug()<<"nop";
+        }
+        noeud = noeud.nextSibling();
+    }
+    file.close();
+
+
     QDomElement docEle = document.documentElement();
     QDomNodeList elements = docEle.elementsByTagName("seances");
 
     QDomElement seance = document.createElement("seance");
-    seance.setAttribute("id", 2);
+    seance.setAttribute("id", id+1);
 
     QDomElement dateArEle = document.createElement("dateArrivee");
     QDomText dateArCont = document.createTextNode(dateArrivee);
@@ -141,3 +170,185 @@ void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heur
 
 }
 
+void gestionXml::modElement(QString data)
+{
+
+
+    QFile file("C:/Users/Christian GROS/Desktop/xmlClass/test3.xml");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << "Failed to open file";
+    }
+    QDomDocument document;
+    if (!document.setContent(&file))
+    {
+        qDebug() << "failed to parse file";
+        file.close();
+    }
+
+    file.close();
+
+
+
+
+    dom_element = document.documentElement();
+
+    noeud = dom_element.firstChild();
+
+    QDomElement domElement = noeud.toElement();
+        while (!noeud.isNull()) {
+            QDomElement domElement = noeud.toElement();
+            if (!domElement.isNull()) {
+                if (domElement.tagName() == "seance") {
+                    QDomNode node = domElement.firstChild();
+                    while (!node.isNull()) {
+                        QDomElement element = node.toElement();
+                        if (!element.isNull()) {
+                            const QString tagName(element.tagName());
+                            if (tagName == data) {
+                                qDebug() << data << " is:" << element.text();
+                                QDomElement dateArEle = document.createElement("dateArrivee");
+                                QDomText dateArCont = document.createTextNode("eeeeee");
+
+
+                                QDomNodeList umgVars = dom_element.elementsByTagName("dateArrivee");
+                                if(!umgVars.isEmpty())
+                                {
+                                    QDomNode lastElem = umgVars.at(umgVars.size() - 1);
+                                    lastElem.parentNode().removeChild(lastElem);
+                                }
+
+
+
+                                element.appendChild(dateArCont);
+                            }
+                        node = node.nextSibling();
+                        }
+                    }
+                }
+            }
+                noeud = noeud.nextSibling();
+    }
+    file.close();
+
+
+
+
+
+
+
+
+
+
+    QFile outFile( "C:/Users/Christian GROS/Desktop/xmlClass/test3.xml" );
+
+    if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
+        qDebug( "Failed to open file for writing." );
+
+    QTextStream stream( &outFile );
+    stream << document.toString();
+
+    outFile.close();
+
+
+}
+
+void gestionXml::supElement(QString data)
+{
+
+    QFile file("C:/Users/Christian GROS/Desktop/xmlClass/test3.xml");
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << "Failed to open file";
+    }
+    QDomDocument document;
+    if (!document.setContent(&file))
+    {
+        qDebug() << "failed to parse file";
+        file.close();
+    }
+
+    file.close();
+
+    dom_element = document.documentElement();
+    QDomNodeList umgVars = dom_element.elementsByTagName("seance");
+
+//    if(!umgVars.isEmpty())
+//    {
+//        QDomNode lastElem = umgVars.at(umgVars.size() - 1);
+//        lastElem.parentNode().removeChild(lastElem);
+//    }
+    ////////////////////////////////////////////////////////////////:
+//    QDomNode lastElem = umgVars.at(umgVars.size() - 1);
+//    noeud = dom_element.firstChild();
+//    QDomElement domElement = noeud.toElement();
+//    QDomElement lastEEEE = lastElem.toElement();
+//    int id = 0;
+
+//    while (!noeud.isNull()) {
+//        QDomElement domElement = noeud.toElement();
+//        if (!domElement.isNull()) {
+//            id++;
+//            qDebug()<<id;
+//            if (domElement.attribute("id")!="2") {
+//                qDebug()<<"ok";
+//                lastElem.parentNode().removeChild(domElement.firstChild());
+//            }
+//            qDebug()<<"nop";
+//        }
+//        noeud = noeud.nextSibling();
+//    }
+//    file.close();
+
+
+    int id = 0;
+    QDomNode lastElem = umgVars.at(umgVars.size() - 1);
+    dom_element = document.documentElement();
+    noeud = dom_element.firstChild();
+    QDomElement domElement = noeud.toElement();
+    QDomElement lastEEEE = lastElem.toElement();
+
+    while (!noeud.isNull()) {
+        QDomElement domElement = noeud.toElement();
+        if (!domElement.isNull()) {
+            if (domElement.tagName()=="seance" && domElement.attribute("id")=="2") {
+                qDebug()<<domElement.attribute("id").toInt();
+//                domElement.removeChild(domElement.firstChildElement());
+                qDebug()<<domElement.nodeValue().toInt();
+                id = domElement.attribute("id").toInt();
+                lastElem.parentNode().removeChild(lastElem);
+            }
+            qDebug()<<"nop";
+        }
+        noeud = noeud.nextSibling();
+    }
+    file.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    QFile outFile( "C:/Users/Christian GROS/Desktop/xmlClass/test3.xml" );
+
+    if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
+        qDebug( "Failed to open file for writing." );
+
+    QTextStream stream( &outFile );
+    stream << document.toString();
+
+    outFile.close();
+}
