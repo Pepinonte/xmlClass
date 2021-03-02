@@ -215,6 +215,7 @@ void gestionXml::modElement(QString data)
                                     lastElem.parentNode().removeChild(lastElem);
                                 }
                                 element.appendChild(dateArCont);
+                            
                             }
                         node = node.nextSibling();
                         }
