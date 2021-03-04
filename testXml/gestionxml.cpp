@@ -170,75 +170,7 @@ void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heur
 
 }
 
-void gestionXml::modElement(QString data)
-{
-
-
-    QFile file("C:/Users/Christian GROS/Desktop/xmlClass/test3.xml");
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        qDebug() << "Failed to open file";
-    }
-    QDomDocument document;
-    if (!document.setContent(&file))
-    {
-        qDebug() << "failed to parse file";
-        file.close();
-    }
-
-    file.close();
-
-    dom_element = document.documentElement();
-
-    noeud = dom_element.firstChild();
-
-    QDomElement domElement = noeud.toElement();
-        while (!noeud.isNull()) {
-            QDomElement domElement = noeud.toElement();
-            if (!domElement.isNull()) {
-                if (domElement.tagName() == "seance") {
-                    QDomNode node = domElement.firstChild();
-                    while (!node.isNull()) {
-                        QDomElement element = node.toElement();
-                        if (!element.isNull()) {
-                            const QString tagName(element.tagName());
-                            if (tagName == data) {
-                                qDebug() << data << " is:" << element.text();
-                                QDomElement dateArEle = document.createElement("dateDepart");
-                                QDomText dateArCont = document.createTextNode("eeeeee");
-
-
-                                QDomNodeList umgVars = dom_element.elementsByTagName("dateDepart");
-                                if(!umgVars.isEmpty())
-                                {
-                                    QDomNode lastElem = umgVars.at(umgVars.size()-1);
-                                    lastElem.parentNode().removeChild(lastElem);
-                                }
-                                element.appendChild(dateArCont);
-                            }
-                        node = node.nextSibling();
-                        }
-                    }
-                }
-            }
-            noeud = noeud.nextSibling();
-    }
-    file.close();
-
-    QFile outFile( "C:/Users/Christian GROS/Desktop/xmlClass/test3.xml" );
-
-    if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
-        qDebug( "Failed to open file for writing." );
-
-    QTextStream stream( &outFile );
-    stream << document.toString();
-
-    outFile.close();
-
-
-}
-
-void gestionXml::supElement(QString data)
+void gestionXml::supElement(QString data, QString id)
 {
 
     QFile file("C:/Users/Christian GROS/Desktop/xmlClass/test3.xml");
@@ -258,74 +190,40 @@ void gestionXml::supElement(QString data)
 
     dom_element = document.documentElement();
     QDomNodeList umgVars = dom_element.elementsByTagName("seance");
-
-//    if(!umgVars.isEmpty())
-//    {
-//        QDomNode lastElem = umgVars.at(umgVars.size() - 1);
-//        lastElem.parentNode().removeChild(lastElem);
-//    }
-    ////////////////////////////////////////////////////////////////:
-//    QDomNode lastElem = umgVars.at(umgVars.size() - 1);
-//    noeud = dom_element.firstChild();
-//    QDomElement domElement = noeud.toElement();
-//    QDomElement lastEEEE = lastElem.toElement();
-//    int id = 0;
-
-//    while (!noeud.isNull()) {
-//        QDomElement domElement = noeud.toElement();
-//        if (!domElement.isNull()) {
-//            id++;
-//            qDebug()<<id;
-//            if (domElement.attribute("id")!="2") {
-//                qDebug()<<"ok";
-//                lastElem.parentNode().removeChild(domElement.firstChild());
-//            }
-//            qDebug()<<"nop";
-//        }
-//        noeud = noeud.nextSibling();
-//    }
-//    file.close();
-
-
-    int id = 0;
-    QDomNode lastElem = umgVars.at(umgVars.size() - 1);
+    QDomNode lastElem = umgVars.at(umgVars.size() - 2);
     dom_element = document.documentElement();
     noeud = dom_element.firstChild();
     QDomElement domElement = noeud.toElement();
     QDomElement lastEEEE = lastElem.toElement();
+//    int somme;
+    int i = 0;
+
+//    for (i=0; !noeud.isNull(); i=i+1){
+
+//        somme = somme + i;
+//        qDebug()<<i;
+//    }
+
 
     while (!noeud.isNull()) {
         QDomElement domElement = noeud.toElement();
         if (!domElement.isNull()) {
-            if (domElement.tagName()=="seance" && domElement.attribute("id")=="2") {
+            if (domElement.tagName()=="seance" && domElement.attribute("id")==id) {
                 qDebug()<<domElement.attribute("id").toInt();
 //                domElement.removeChild(domElement.firstChildElement());
-                qDebug()<<domElement.nodeValue().toInt();
-                id = domElement.attribute("id").toInt();
-                lastElem.parentNode().removeChild(lastElem);
+//                qDebug()<<domElement.nodeValue().toInt();
+//                lastElem.parentNode().removeChild(lastElem);
+                i = 0;
             }
+            i++;
+            qDebug()<<i;
+            lastElem = umgVars.at(umgVars.size() - i);
             qDebug()<<"nop";
         }
         noeud = noeud.nextSibling();
     }
+    lastElem.parentNode().removeChild(lastElem);
     file.close();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     QFile outFile( "C:/Users/Christian GROS/Desktop/xmlClass/test3.xml" );
 
@@ -336,4 +234,10 @@ void gestionXml::supElement(QString data)
     stream << document.toString();
 
     outFile.close();
+}
+
+void gestionXml::modElement(gestionXml& xml)
+{
+    xml.supElement("seance", "2");
+    xml.newSeance("1","2","3","4","5");
 }

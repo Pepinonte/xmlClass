@@ -1,12 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <seances>
- <seance id="19">
+ <seance id="1">
   <dateArrivee>a</dateArrivee>
   <heureArrivee>c</heureArrivee>
+  <dateDepart>b</dateDepart>
   <heureDepart>c</heureDepart>
   <typeClient>d</typeClient>
  </seance>
- <seance id="20">
+ <seance id="2">
+  <dateArrivee>dzdzd</dateArrivee>
+  <heureArrivee>zdddz</heureArrivee>
+  <dateDepart>zdzdzd</dateDepart>
+  <heureDepart>zdzd</heureDepart>
+  <typeClient>dzdzdz</typeClient>
+ </seance>
+ <seance id="3">
+  <dateArrivee>a</dateArrivee>
+  <heureArrivee>c</heureArrivee>
+  <dateDepart>b</dateDepart>
+  <heureDepart>c</heureDepart>
+  <typeClient>d</typeClient>
+ </seance>
+ <seance id="4">
   <dateArrivee>a</dateArrivee>
   <heureArrivee>c</heureArrivee>
   <dateDepart>b</dateDepart>
