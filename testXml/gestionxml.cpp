@@ -80,7 +80,7 @@ void gestionXml::structSenace(QString path)
 void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heureDepart, QString heureArrivee, QString type)
 {
 
-    QFile file("C:/Users/Christian GROS/Desktop/xmlClass/test3.xml");
+    QFile file("C:/Users/Christian GROS/Documents/Projet NS2/xmlClass/test3.xml");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         qDebug() << "Failed to open file";
@@ -158,7 +158,7 @@ void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heur
 
     docEle.appendChild(seance);
 
-    QFile outFile( "C:/Users/Christian GROS/Desktop/xmlClass/test3.xml" );
+    QFile outFile( "C:/Users/Christian GROS/Documents/Projet NS2/xmlClass/test3.xml" );
 
     if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
         qDebug( "Failed to open file for writing." );
@@ -170,10 +170,10 @@ void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heur
 
 }
 
-void gestionXml::supElement(QString data, QString id)
+void gestionXml::supElement(QString id)
 {
 
-    QFile file("C:/Users/Christian GROS/Desktop/xmlClass/test3.xml");
+    QFile file("C:/Users/Christian GROS/Documents/Projet NS2/xmlClass/test3.xml");
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -195,24 +195,14 @@ void gestionXml::supElement(QString data, QString id)
     noeud = dom_element.firstChild();
     QDomElement domElement = noeud.toElement();
     QDomElement lastEEEE = lastElem.toElement();
-//    int somme;
+
     int i = 0;
-
-//    for (i=0; !noeud.isNull(); i=i+1){
-
-//        somme = somme + i;
-//        qDebug()<<i;
-//    }
-
 
     while (!noeud.isNull()) {
         QDomElement domElement = noeud.toElement();
         if (!domElement.isNull()) {
             if (domElement.tagName()=="seance" && domElement.attribute("id")==id) {
                 qDebug()<<domElement.attribute("id").toInt();
-//                domElement.removeChild(domElement.firstChildElement());
-//                qDebug()<<domElement.nodeValue().toInt();
-//                lastElem.parentNode().removeChild(lastElem);
                 i = 0;
             }
             i++;
@@ -225,7 +215,7 @@ void gestionXml::supElement(QString data, QString id)
     lastElem.parentNode().removeChild(lastElem);
     file.close();
 
-    QFile outFile( "C:/Users/Christian GROS/Desktop/xmlClass/test3.xml" );
+    QFile outFile( "C:/Users/Christian GROS/Documents/Projet NS2/xmlClass/test3.xml" );
 
     if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
         qDebug( "Failed to open file for writing." );
@@ -238,6 +228,44 @@ void gestionXml::supElement(QString data, QString id)
 
 void gestionXml::modElement(gestionXml& xml)
 {
-    xml.supElement("seance", "2");
+    xml.supElement("2");
     xml.newSeance("1","2","3","4","5");
+}
+
+void gestionXml::setSenace(QString id)
+{
+    dom_element = document.documentElement();
+
+    noeud = dom_element.firstChild();
+    int n = 0;
+
+    QDomElement domElement = noeud.toElement();
+        while (!noeud.isNull()) {
+            QDomElement domElement = noeud.toElement();
+            if (!domElement.isNull()) {
+                if (domElement.tagName() == "seance" && domElement.attribute("id")==id) {
+                    QDomNode node = domElement.firstChild();
+                    while (!node.isNull()) {
+                        QDomElement element = node.toElement();
+                        if (!element.isNull()) {
+                            const QString tagName(element.tagName());
+                            tab[n] = element.text();
+//                            qDebug() << tab[n];
+                            node = node.nextSibling();
+                            n++;
+                        }
+                    }
+                }
+            }
+                noeud = noeud.nextSibling();
+    }
+    file.close();
+
+
+
+}
+
+QString gestionXml::getTab(int n)
+{
+    return tab[n];
 }

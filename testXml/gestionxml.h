@@ -14,7 +14,9 @@ public:
     void structSenace(QString path);
     void newSeance(QString dateArrivee, QString dateDepart, QString heureDepart, QString heureArrivee, QString type);
     void modElement(gestionXml& xml);
-    void supElement(QString data, QString id);
+    void supElement(QString id);
+    void setSenace(QString id);
+    QString getTab(int n);
 
 private:
     QDomDocument document;
@@ -22,6 +24,7 @@ private:
     QDomNode noeud;
     QDomElement element;
     QDomElement dom_element;
+    QString tab[5];
 };
 
 #endif // GESTIONXML_H

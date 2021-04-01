@@ -8,20 +8,13 @@
   <typeClient>d</typeClient>
  </seance>
  <seance id="2">
-  <dateArrivee>dzdzd</dateArrivee>
-  <heureArrivee>zdddz</heureArrivee>
-  <dateDepart>zdzdzd</dateDepart>
-  <heureDepart>zdzd</heureDepart>
-  <typeClient>dzdzdz</typeClient>
- </seance>
- <seance id="3">
   <dateArrivee>a</dateArrivee>
   <heureArrivee>c</heureArrivee>
   <dateDepart>b</dateDepart>
   <heureDepart>c</heureDepart>
   <typeClient>d</typeClient>
  </seance>
- <seance id="4">
+ <seance id="3">
   <dateArrivee>a</dateArrivee>
   <heureArrivee>c</heureArrivee>
   <dateDepart>b</dateDepart>
