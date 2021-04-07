@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <seances>
  <seance id="1">
-  <dateArrivee>a</dateArrivee>
-  <heureArrivee>c</heureArrivee>
-  <dateDepart>b</dateDepart>
-  <heureDepart>c</heureDepart>
-  <typeClient>d</typeClient>
+  <dateArrivee>dim. févr. 7 2021</dateArrivee>
+  <heureArrivee>00:37:36</heureArrivee>
+  <dateDepart>dim. févr. 7 2021</dateDepart>
+  <heureDepart>00:37:36</heureDepart>
+  <typeClient>debutant</typeClient>
  </seance>
  <seance id="2">
   <dateArrivee>a</dateArrivee>
