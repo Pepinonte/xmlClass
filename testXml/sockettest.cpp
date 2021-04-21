@@ -17,7 +17,7 @@ void SocketTest::Connect()
     {
         qDebug() << "Connected!";
 
-        xml.openFile("C:/Users/Christian GROS/Documents/Projet NS2/xmlClass/test3.xml");
+        xml.openFile("C:/Users/Christian GROS/Documents/xmlClass/test3.xml");
 
         xml.setSenace("1");
 

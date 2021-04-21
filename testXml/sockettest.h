@@ -11,7 +11,7 @@ class SocketTest : public QObject
 public:
     explicit SocketTest(QObject *parent = 0);
 
-    void Connect();
+void Connect();
     
 signals:
     
