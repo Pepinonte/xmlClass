@@ -19,7 +19,7 @@ void SocketTest::Connect()
 
         xml.openFile("C:/Users/Christian GROS/Documents/xmlClass/test3.xml");
 
-        xml.setSenace("1");
+        xml.setSenace("8");
 
         for (int i=0;i<=4;i++)
         {

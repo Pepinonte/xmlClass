@@ -80,7 +80,7 @@ void gestionXml::structSenace(QString path)
 void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heureDepart, QString heureArrivee, QString type)
 {
 
-    QFile file("C:/Users/Christian GROS/Documents/Projet NS2/xmlClass/test3.xml");
+    QFile file("C:/Users/Christian GROS/Documents/xmlClass/test3.xml");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
         qDebug() << "Failed to open file";
@@ -158,7 +158,7 @@ void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heur
 
     docEle.appendChild(seance);
 
-    QFile outFile( "C:/Users/Christian GROS/Documents/Projet NS2/xmlClass/test3.xml" );
+    QFile outFile( "C:/Users/Christian GROS/Documents/xmlClass/test3.xml" );
 
     if( !outFile.open( QIODevice::WriteOnly | QIODevice::Text ) )
         qDebug( "Failed to open file for writing." );

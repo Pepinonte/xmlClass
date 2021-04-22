@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <seances>
  <seance id="1">
-  <dateArrivee>dim. févr. 7 2021</dateArrivee>
+  <dateArrivee>dim. f?vr. 7 2021</dateArrivee>
   <heureArrivee>00:37:36</heureArrivee>
-  <dateDepart>dim. févr. 7 2021</dateDepart>
+  <dateDepart>dim. f?vr. 7 2021</dateDepart>
   <heureDepart>00:37:36</heureDepart>
   <typeClient>debutant</typeClient>
  </seance>
@@ -20,5 +20,40 @@
   <dateDepart>b</dateDepart>
   <heureDepart>c</heureDepart>
   <typeClient>d</typeClient>
+ </seance>
+ <seance id="4">
+  <dateArrivee>sam. avri. 23 2021</dateArrivee>
+  <heureArrivee>14:37:36</heureArrivee>
+  <dateDepart>sam. avri. 23 2021</dateDepart>
+  <heureDepart>16:37:36</heureDepart>
+  <typeClient>debutant</typeClient>
+ </seance>
+ <seance id="5">
+  <dateArrivee>a</dateArrivee>
+  <heureArrivee>c</heureArrivee>
+  <dateDepart>b</dateDepart>
+  <heureDepart>c</heureDepart>
+  <typeClient>d</typeClient>
+ </seance>
+ <seance id="6">
+  <dateArrivee>jeu. avr. 22 2021</dateArrivee>
+  <heureArrivee>23:06:49</heureArrivee>
+  <dateDepart>jeu. avr. 22 2021</dateDepart>
+  <heureDepart>23:06:49</heureDepart>
+  <typeClient>debutant</typeClient>
+ </seance>
+ <seance id="7">
+  <dateArrivee>ven. avr. 23 2021</dateArrivee>
+  <heureArrivee>17:06:49</heureArrivee>
+  <dateDepart>ven. avr. 23 2021</dateDepart>
+  <heureDepart>18:06:49</heureDepart>
+  <typeClient>debutant</typeClient>
+ </seance>
+ <seance id="8">
+  <dateArrivee>dim. avr. 25 2021</dateArrivee>
+  <heureArrivee>13:12:02</heureArrivee>
+  <dateDepart>dim. avr. 25 2021</dateDepart>
+  <heureDepart>16:12:02</heureDepart>
+  <typeClient>debutant</typeClient>
  </seance>
 </seances>
