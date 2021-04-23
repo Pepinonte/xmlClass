@@ -21,4 +21,11 @@
   <heureDepart>14:35:12</heureDepart>
   <typeClient>debutant</typeClient>
  </seance>
+ <seance id="4">
+  <dateArrivee>a</dateArrivee>
+  <heureArrivee>c</heureArrivee>
+  <dateDepart>b</dateDepart>
+  <heureDepart>c</heureDepart>
+  <typeClient>d</typeClient>
+ </seance>
 </seances>

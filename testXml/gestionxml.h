@@ -4,6 +4,7 @@
 #include <QCoreApplication>
 #include <QtXml>
 #include <QDebug>
+#include <QVector>
 
 class gestionXml
 {
@@ -18,6 +19,7 @@ public:
     void setSenace(QString id);
     QString getTab(int n);
     int getNumberId();
+    QVector<int> idDay(QString data);
 
 private:
     QDomDocument document;
