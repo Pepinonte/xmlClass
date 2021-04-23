@@ -29,6 +29,8 @@ int main(int argc, char *argv[])
 //        qDebug()<<xml.getTab(i);
 //    }
 
+    xml.getNumberId();
+
 
     return a.exec();
 }

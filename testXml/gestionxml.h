@@ -17,6 +17,7 @@ public:
     void supElement(QString id);
     void setSenace(QString id);
     QString getTab(int n);
+    int getNumberId();
 
 private:
     QDomDocument document;
