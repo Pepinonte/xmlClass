@@ -173,7 +173,7 @@ void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heur
 void gestionXml::supElement(QString id)
 {
 
-    QFile file("C:/Users/Christian GROS/Documents/Projet NS2/xmlClass/test3.xml");
+    QFile file("C:/Users/Christian GROS/Documents/xmlClass/test3.xml");
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {

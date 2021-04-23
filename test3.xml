@@ -7,4 +7,18 @@
   <heureDepart>14:06:47</heureDepart>
   <typeClient>debutant</typeClient>
  </seance>
+ <seance id="2">
+  <dateArrivee>ven. avr. 23 2021</dateArrivee>
+  <heureArrivee>14:35:12</heureArrivee>
+  <dateDepart>ven. avr. 23 2021</dateDepart>
+  <heureDepart>14:35:12</heureDepart>
+  <typeClient>debutant</typeClient>
+ </seance>
+ <seance id="3">
+  <dateArrivee>ven. avr. 23 2021</dateArrivee>
+  <heureArrivee>14:35:12</heureArrivee>
+  <dateDepart>ven. avr. 23 2021</dateDepart>
+  <heureDepart>14:35:12</heureDepart>
+  <typeClient>debutant</typeClient>
+ </seance>
 </seances>
