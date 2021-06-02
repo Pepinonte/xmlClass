@@ -375,3 +375,5 @@ QVector<int> gestionXml::idDay(QString data)
 
     return mesIds;
 }
+
+
