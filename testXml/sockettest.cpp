@@ -19,7 +19,11 @@ void SocketTest::Connect()
 
         xml.openFile("C:/Users/Christian GROS/Documents/xmlClass/test3.xml");
 
-        xml.setSenace("8");
+        int id = xml.getNumberId();
+        QString str;
+
+
+        xml.setSenace(str.setNum(id));
 
         for (int i=0;i<=4;i++)
         {

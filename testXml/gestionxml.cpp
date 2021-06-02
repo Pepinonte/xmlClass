@@ -173,7 +173,7 @@ void gestionXml::newSeance(QString dateArrivee, QString dateDepart, QString heur
 void gestionXml::supElement(QString id)
 {
 
-    QFile file("C:/Users/Christian GROS/Documents/Projet NS2/xmlClass/test3.xml");
+    QFile file("C:/Users/Christian GROS/Documents/xmlClass/test3.xml");
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
     {
@@ -269,3 +269,111 @@ QString gestionXml::getTab(int n)
 {
     return tab[n];
 }
+
+int gestionXml::getNumberId()
+{
+    QFile file("C:/Users/Christian GROS/Documents/xmlClass/test3.xml");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << "Failed to open file";
+    }
+    QDomDocument document;
+    if (!document.setContent(&file))
+    {
+        qDebug() << "failed to parse file";
+        file.close();
+    }
+
+    file.close();
+
+    QDomNodeList umgVars = dom_element.elementsByTagName("seance");
+
+    QDomNode lastElem = umgVars.at(umgVars.size() - 1);
+    dom_element = document.documentElement();
+    noeud = dom_element.firstChild();
+    QDomElement domElement = noeud.toElement();
+    QDomElement lastEEEE = lastElem.toElement();
+    int id = 0;
+
+    while (!noeud.isNull()) {
+        QDomElement domElement = noeud.toElement();
+        if (!domElement.isNull()) {
+            id++;
+//            qDebug()<<id;
+            if (domElement.attribute("id")!="") {
+                id++;
+//                qDebug()<<id;
+//                qDebug()<<domElement.attribute("id").toInt();
+                id = domElement.attribute("id").toInt();
+
+            }
+//            qDebug()<<"nop";
+        }
+        noeud = noeud.nextSibling();
+    }
+    file.close();
+    qDebug()<<id;
+    return id;
+}
+
+QVector<int> gestionXml::idDay(QString data)
+{
+    QFile file("C:/Users/Christian GROS/Documents/xmlClass/test3.xml");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        qDebug() << "Failed to open file";
+    }
+    QDomDocument document;
+    if (!document.setContent(&file))
+    {
+        qDebug() << "failed to parse file";
+        file.close();
+    }
+
+    file.close();
+
+    QDomNodeList umgVars = dom_element.elementsByTagName("seance");
+
+    QDomNode lastElem = umgVars.at(umgVars.size() - 1);
+    dom_element = document.documentElement();
+    noeud = dom_element.firstChild();
+    QDomElement domElement = noeud.toElement();
+    QDomElement lastEEEE = lastElem.toElement();
+    int id = 0;
+    QVector<int> mesIds;
+
+    while (!noeud.isNull()) {
+        QDomElement domElement = noeud.toElement();
+        if (!domElement.isNull()) {
+            id++;
+
+            if (domElement.attribute("id") != "") {
+                id++;
+                id = domElement.attribute("id").toInt();
+            }
+
+            if (domElement.tagName() == "seance") {
+                QDomNode node = domElement.firstChild();
+                while (!node.isNull()) {
+                    QDomElement element = node.toElement();
+                    if (!element.isNull()) {
+                        const QString tagName(element.tagName());
+                        if (tagName == "dateArrivee") {
+                            if(element.text() == data){
+                                mesIds << id;
+//                                qDebug()<<mesIds;
+                            }
+                        }
+                    node = node.nextSibling();
+                    }
+                }
+            }
+        }
+        noeud = noeud.nextSibling();
+    }
+    file.close();
+
+    return mesIds;
+}
+
+
